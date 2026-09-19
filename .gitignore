@@ -1,0 +1,44 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.ruff_cache/
+
+# Generated documents — rebuild with `uv run python build.py`
+*.pdf
+*.docx
+preview.html
+
+# Intermediate build output (the HTML handed to Chrome)
+.build/
+
+# Scratch
+docx-check.txt
+.review/
+*.tmp.py
+*.pdf.tmp
+
+# The README preview is generated once and committed on purpose
+!docs/preview.png
+
+# ---------------------------------------------------------------------------
+# Private, local-only content. These are anchored to the repository root so
+# that examples/ is NOT affected.
+#
+# The published repository carries the system and sample content only. Your
+# real résumé, your career record and your actual job applications stay on
+# this machine and are never committed.
+# ---------------------------------------------------------------------------
+/resume.md
+/MASTER_RECORD.md
+/applications/
+/photo.jpg
+/.workbuddy-ai/
+
+# OS and secrets noise
+.DS_Store
+Thumbs.db
+.env
+
+# VS Code
+.vscode/

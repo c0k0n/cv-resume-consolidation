@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 306" width="820" height="306" role="img" aria-labelledby="at-t at-d">
+<title id="at-t">What an ATS can and cannot read</title>
+<desc id="at-d">Left column lists formats that parse cleanly: single column, selectable text, standard headings, contact in the body, Month Year dates and real links. Right column lists what breaks parsers: tables for layout, icons and text boxes, contact in the page header, multi-column grids and Type3 fonts.</desc>
+<defs>
+<style>
+.pnl{fill:#F4F7FB;stroke:#C6D2E2;stroke-width:1}
+.tt{font:600 13px -apple-system,BlinkMacSystemFont,"Segoe UI",Calibri,Roboto,Helvetica,Arial,sans-serif;fill:#0F2A4A}
+.it{font:400 12px -apple-system,BlinkMacSystemFont,"Segoe UI",Calibri,Roboto,Helvetica,Arial,sans-serif;fill:#2A2A2A}
+.ok{fill:#E1F5EE;stroke:#1D9E75;stroke-width:1}
+.okm{stroke:#1D9E75;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.no{fill:#FAECE7;stroke:#D85A30;stroke-width:1}
+.nom{stroke:#D85A30;stroke-width:1.6;fill:none;stroke-linecap:round}
+.anim{animation:pop .45s ease-out backwards}
+@keyframes pop{from{opacity:0}to{opacity:1}}
+@media (prefers-color-scheme:dark){
+.pnl{fill:#151B25;stroke:#33415A}
+.tt{fill:#DCE7F5}.it{fill:#C7D2E0}
+.ok{fill:#0C3B2E;stroke:#5DCAA5}.okm{stroke:#5DCAA5}
+.no{fill:#3D1D14;stroke:#F0997B}.nom{stroke:#F0997B}
+}
+@media (prefers-reduced-motion:reduce){.anim{animation:none}}
+</style>
+</defs>
+
+<rect class="pnl" x="24" y="24" width="376" height="258" rx="12"/>
+<text class="tt" x="48" y="58">Parses cleanly</text>
+
+<circle class="ok" cx="60" cy="96" r="8"/>
+<path class="okm" d="M56 96 l3 3 l5 -6"/>
+<text class="it anim" x="80" y="100" style="animation-delay:.05s">Single column, reading order intact</text>
+
+<circle class="ok" cx="60" cy="128" r="8"/>
+<path class="okm" d="M56 128 l3 3 l5 -6"/>
+<text class="it anim" x="80" y="132" style="animation-delay:.12s">Real selectable vector text</text>
+
+<circle class="ok" cx="60" cy="160" r="8"/>
+<path class="okm" d="M56 160 l3 3 l5 -6"/>
+<text class="it anim" x="80" y="164" style="animation-delay:.19s">Standard headings: Summary, Skills…</text>
+
+<circle class="ok" cx="60" cy="192" r="8"/>
+<path class="okm" d="M56 192 l3 3 l5 -6"/>
+<text class="it anim" x="80" y="196" style="animation-delay:.26s">Contact in the body, not the header</text>
+
+<circle class="ok" cx="60" cy="224" r="8"/>
+<path class="okm" d="M56 224 l3 3 l5 -6"/>
+<text class="it anim" x="80" y="228" style="animation-delay:.33s">Dates as Month Year</text>
+
+<circle class="ok" cx="60" cy="256" r="8"/>
+<path class="okm" d="M56 256 l3 3 l5 -6"/>
+<text class="it anim" x="80" y="260" style="animation-delay:.40s">mailto:, tel: and https: links</text>
+
+<rect class="pnl" x="420" y="24" width="376" height="258" rx="12"/>
+<text class="tt" x="444" y="58">Breaks the parser</text>
+
+<circle class="no" cx="456" cy="96" r="8"/>
+<path class="nom" d="M452 92 l8 8 M460 92 l-8 8"/>
+<text class="it anim" x="476" y="100" style="animation-delay:.05s">Tables or grids used for layout</text>
+
+<circle class="no" cx="456" cy="128" r="8"/>
+<path class="nom" d="M452 124 l8 8 M460 124 l-8 8"/>
+<text class="it anim" x="476" y="132" style="animation-delay:.12s">Icons, logos, text boxes</text>
+
+<circle class="no" cx="456" cy="160" r="8"/>
+<path class="nom" d="M452 156 l8 8 M460 156 l-8 8"/>
+<text class="it anim" x="476" y="164" style="animation-delay:.19s">Contact parked in the page header</text>
+
+<circle class="no" cx="456" cy="192" r="8"/>
+<path class="nom" d="M452 188 l8 8 M460 188 l-8 8"/>
+<text class="it anim" x="476" y="196" style="animation-delay:.26s">Two-column or card layouts</text>
+
+<circle class="no" cx="456" cy="224" r="8"/>
+<path class="nom" d="M452 220 l8 8 M460 220 l-8 8"/>
+<text class="it anim" x="476" y="228" style="animation-delay:.33s">Type3 fonts some parsers skip</text>
+
+<circle class="no" cx="456" cy="256" r="8"/>
+<path class="nom" d="M452 252 l8 8 M460 252 l-8 8"/>
+<text class="it anim" x="476" y="260" style="animation-delay:.40s">Rasterised pages with no text layer</text>
+</svg>

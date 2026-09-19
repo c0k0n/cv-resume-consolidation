@@ -1,0 +1,8 @@
+# Normalise line endings so contributors on any platform produce clean diffs.
+* text=auto eol=lf
+
+# Never let Git try to diff or normalise these.
+*.png binary
+*.jpg binary
+*.pdf binary
+*.docx binary

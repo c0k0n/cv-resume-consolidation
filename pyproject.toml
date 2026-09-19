@@ -1,0 +1,25 @@
+[project]
+name = "cv-resume-consolidation"
+version = "0.3.0"
+requires-python = ">=3.12"
+dependencies = [
+    "pymupdf>=1.28.2",     # PDF text extraction + metadata rewriting
+    "python-docx>=1.2.0",  # DOCX generation with proper Word styles + hyperlinks
+    "pillow>=10.0.0",      # Crop / resize the headshot
+]
+# PDF rendering is done by headless Google Chrome / Microsoft Edge
+# (already installed on Windows 11 machines). No Python deps for that.
+#
+# On a fresh machine:
+#   uv sync
+#   uv run python build.py --check
+
+# Type checking. "strict" is a bad fit here: it enables the reportUnknown*
+# rules, and python-docx (OxmlElement -> `BaseOxmlElement | Unknown`) plus
+# pymupdf (get_links() -> `list[Unknown]`) have thin hints. Strict output is
+# ~250 "type is unknown" diagnostics that no code change can clear without
+# casting every lxml node. Standard keeps the checks that find real bugs.
+# Pylance picks this up too; .vscode/settings.json repeats it because a
+# user-level "strict" setting would otherwise win.
+[tool.pyright]
+typeCheckingMode = "standard"

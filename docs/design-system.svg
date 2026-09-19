@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 306" width="820" height="306" role="img" aria-labelledby="ds-t ds-d">
+<title id="ds-t">Type scale and page anatomy</title>
+<desc id="ds-d">A specimen of every text style in the resume: 26pt name, 8.8pt section heading with a 1.5pt navy rule, 10pt body, 10.4pt entry title, 9.4pt italic meta line and 9.6pt bullets.</desc>
+<defs>
+<style>
+.nm{font:600 26px -apple-system,BlinkMacSystemFont,"Segoe UI",Calibri,Roboto,Helvetica,Arial,sans-serif;fill:#0F2A4A}
+.sb{font:400 10px -apple-system,BlinkMacSystemFont,"Segoe UI",Calibri,Roboto,Helvetica,Arial,sans-serif;fill:#4A5A72}
+.ct{font:400 9px -apple-system,BlinkMacSystemFont,"Segoe UI",Calibri,Roboto,Helvetica,Arial,sans-serif;fill:#2A2A2A}
+.sh{font:700 8.8px -apple-system,BlinkMacSystemFont,"Segoe UI",Calibri,Roboto,Helvetica,Arial,sans-serif;fill:#0F2A4A;letter-spacing:1.6px}
+.rl{fill:#0F2A4A}
+.bd{font:400 10px -apple-system,BlinkMacSystemFont,"Segoe UI",Calibri,Roboto,Helvetica,Arial,sans-serif;fill:#1A1A1A}
+.et{font:600 10.4px -apple-system,BlinkMacSystemFont,"Segoe UI",Calibri,Roboto,Helvetica,Arial,sans-serif;fill:#0A0A0A}
+.or{font:italic 400 9.4px -apple-system,BlinkMacSystemFont,"Segoe UI",Calibri,Roboto,Helvetica,Arial,sans-serif;fill:#4A5A72}
+.bl{font:400 9.6px -apple-system,BlinkMacSystemFont,"Segoe UI",Calibri,Roboto,Helvetica,Arial,sans-serif;fill:#1A1A1A}
+.lb{font:400 11px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fill:#5B6B85}
+.dv{stroke:#C6D2E2;stroke-width:1}
+.ft{font:400 11.5px -apple-system,BlinkMacSystemFont,"Segoe UI",Calibri,Roboto,Helvetica,Arial,sans-serif;fill:#5B6B85}
+@media (prefers-color-scheme:dark){
+.nm{fill:#DCE7F5}.sb{fill:#93A3BC}.ct{fill:#C7D2E0}.sh{fill:#9FC0E8}
+.rl{fill:#7FA8D9}
+.bd{fill:#D5DEEA}.et{fill:#EAF1F9}.or{fill:#93A3BC}.bl{fill:#D5DEEA}
+.lb{fill:#8292AB}.dv{stroke:#33415A}.ft{fill:#8292AB}
+}
+</style>
+</defs>
+
+<text class="nm" x="24" y="42">Jordan Ellis</text>
+<text class="lb" x="800" y="42" text-anchor="end">name · 26pt</text>
+
+<text class="sb" x="24" y="66">IT Operations, Data &amp; Support Professional</text>
+<text class="lb" x="800" y="66" text-anchor="end">subtitle · 10pt</text>
+
+<text class="ct" x="24" y="86">+60 12 345 6789 · jordan.ellis@example.com · linkedin.com/in/example</text>
+<text class="lb" x="800" y="86" text-anchor="end">contact · 9pt</text>
+
+<text class="sh" x="24" y="116">SUMMARY</text>
+<rect class="rl" x="24" y="123" width="330" height="1.5"/>
+<text class="lb" x="800" y="118" text-anchor="end">section · 8.8pt + 1.5pt rule</text>
+
+<text class="bd" x="24" y="146">IT operations and data support professional with a BSc (Hons) in Computer Science.</text>
+<text class="lb" x="800" y="146" text-anchor="end">body · 10pt</text>
+
+<text class="et" x="24" y="172">ITSM | Data Support Analyst</text>
+<text class="lb" x="800" y="172" text-anchor="end">entry title · 10.4pt</text>
+
+<text class="or" x="24" y="192">Northwind Logistics — Kuala Lumpur, Malaysia · May 2024 – Sep 2024</text>
+<text class="lb" x="800" y="192" text-anchor="end">org line · 9.4pt italic</text>
+
+<rect class="rl" x="24" y="211" width="5" height="5"/>
+<text class="bl" x="38" y="220">Resolved 210 ITSM tickets across incident, request and change workflows.</text>
+<text class="lb" x="800" y="220" text-anchor="end">bullet · 9.6pt</text>
+
+<line class="dv" x1="24" y1="242" x2="800" y2="242"/>
+<rect class="rl" x="24" y="258" width="34" height="16" rx="3"/>
+<text class="ft" x="68" y="270">#0F2A4A — one accent, used for headings, rules, bullet squares and links</text>
+<text class="ft" x="24" y="294">A4 · 9mm vertical / 13mm horizontal margins · body never below 8.5pt</text>
+</svg>

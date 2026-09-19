@@ -1,0 +1,323 @@
+/* ============================================================================
+   cv-resume-consolidation — design system
+   ----------------------------------------------------------------------------
+   Goals:
+   - Strictly ATS-safe: one column, vector text, no images/icons/tables-for-layout,
+     no text boxes, real selectable text.
+   - Beautiful enough to pass the "would I interview this person?" gut check
+     when a human does open the file.
+   - Predictable across Chrome / Edge / Acrobat / Workday / Greenhouse /
+     Lever / iCIMS / Taleo / Ashby / SuccessFactors.
+   ========================================================================== */
+
+/* ---------- Page geometry ---------- */
+@page {
+  size: A4;
+  margin: 9mm 13mm 9mm 13mm;
+}
+
+/* Tailored variant keeps the same compact margins by default; if a job ad
+   demands 2 pages, you can use a different template. */
+@page compact {
+  size: A4;
+  margin: 8mm 12mm 8mm 12mm;
+}
+
+/* ---------- Reset / base ---------- */
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  /* NOTE: "Inter" is deliberately NOT in this stack. Inter is installed on
+     this machine but Chrome renders it as a Type3 (glyph-outline) font in
+     --print-to-pdf output, which some ATS parsers cannot read. Calibri and
+     Arial both embed as real TrueType (Type0 + /FontFile2). Verified by
+     bisecting the stack — see .workbuddy-ai/memory. */
+  font-family: "Calibri", "Carlito", "Segoe UI", Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  line-height: 1.3;
+  color: #1a1a1a;
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Stop justified-text rivers on resumes */
+p { margin: 0 0 0.8mm 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+a { color: inherit; text-decoration: none; }
+
+/* ---------- Header block ---------- */
+.header {
+  margin-bottom: 2.5mm;
+  /* Contain the floated headshot. Without a new block formatting context the
+     photo overflows the header box and "towers" over the first section
+     heading below it. */
+  display: flow-root;
+}
+.name {
+  font-size: 26pt;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  line-height: 1.08;
+  margin: 0 0 1mm 0;
+  color: #0F2A4A;
+}
+.subtitle {
+  font-size: 10pt;
+  font-weight: 500;
+  color: #4a5a72;
+  margin: 0 0 1.5mm 0;
+}
+.contact {
+  font-size: 9pt;
+  color: #2a2a2a;
+  margin: 0 0 1.2mm 0;
+}
+.contact .sep {
+  color: #98a4b6;
+  margin: 0 1.6mm;
+}
+.open-to {
+  font-size: 9pt;
+  color: #4a5a72;
+  font-style: italic;
+  margin: 0;
+}
+
+/* Optional photo variant: float right; text wraps around it.
+   3:4 portrait. Sized so the photo variant still fits one page alongside the
+   full content set. */
+.header .photo {
+  float: right;
+  width: 27mm;
+  height: 36mm;
+  margin: 0 0 1.5mm 3.5mm;
+  border-radius: 1mm;
+  object-fit: cover;
+  shape-outside: margin-box;
+}
+
+/* ---------- Section header ---------- */
+.section { margin-top: 1.8mm; }
+.section:first-of-type { margin-top: 1.5mm; }
+
+.section-title {
+  position: relative;
+  font-size: 8.8pt;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #0F2A4A;
+  margin: 0 0 0.7mm 0;
+  padding-bottom: 0.7mm;
+  border-bottom: none;
+}
+/* Drawn as a filled box, not a CSS border. Chrome clamps thin border strokes
+   to ~0.75pt in PDF output, which makes hairline rules render at inconsistent
+   weights across zoom levels. A filled rect keeps exact control, so every
+   section rule on the page is provably identical. */
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* 2 CSS px == 1.5pt. Specified in INTEGER pixels on purpose: Chrome lays
+     out in 96dpi CSS px, so a fractional height (e.g. 1pt = 1.333px) gets
+     rounded to 1px or 2px depending on the element's Y position — which is
+     exactly why the rules rendered at different weights. An integer px value
+     snaps identically everywhere. */
+  height: 2px;
+  background-color: #0F2A4A;
+}
+
+/* ---------- Summary paragraph ---------- */
+.summary p {
+  margin: 0;
+  color: #1a1a1a;
+}
+
+/* ---------- Entry (role, education, project) ---------- */
+.entry {
+  margin: 0 0 1.2mm 0;
+}
+.entry:last-child { margin-bottom: 0; }
+
+.entry-title {
+  font-size: 10.4pt;
+  font-weight: 600;
+  margin: 0 0 0.2mm 0;
+  color: #0a0a0a;
+}
+.entry-org {
+  font-size: 9.4pt;
+  font-style: italic;
+  color: #4a5a72;
+  margin: 0 0 0.2mm 0;
+}
+.entry-meta {
+  font-size: 9pt;
+  color: #4a5a72;
+  margin: 0 0 0.6mm 0;
+}
+.entry-meta .dot {
+  color: #98a4b6;
+  margin: 0 1.2mm;
+}
+
+.entry-bullets {
+  margin: 0.3mm 0 0 0;
+  padding-left: 0;
+}
+.entry-bullets li {
+  position: relative;
+  padding-left: 3.6mm;
+  margin: 0 0 0.3mm 0;
+  font-size: 9.6pt;
+  line-height: 1.3;
+}
+.entry-bullets li:last-child { margin-bottom: 0; }
+/* Marker sized in WHOLE CSS px (5px = 3.75pt) — fractional mm produced a
+   3.75 x 4.5pt rectangle, i.e. visibly not square. `top` is tuned so the
+   marker's centre matches the centre of the adjacent text line (verified by
+   measuring bullet centre vs word bbox centre in the rendered PDF). */
+.entry-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.44mm;
+  width: 5px;
+  height: 5px;
+  background: #0F2A4A;
+}
+
+/* Subtle emphasis for numbers / nouns */
+.entry-bullets li strong { color: #0F2A4A; font-weight: 600; }
+
+/* ---------- Skills ---------- */
+.skill-row {
+  margin: 0 0 0.7mm 0;
+  font-size: 9.6pt;
+  line-height: 1.3;
+}
+.skill-row:last-child { margin-bottom: 0; }
+.skill-row .cat {
+  font-weight: 600;
+  color: #0F2A4A;
+}
+.skill-row .items {
+  color: #1a1a1a;
+}
+
+/* ---------- Honors / certs / publication list ---------- */
+.honors { margin: 0; padding: 0; list-style: square; }
+.honors li {
+  position: relative;
+  padding-left: 3.6mm;
+  margin: 0 0 0.3mm 0;
+  font-size: 9.6pt;
+  line-height: 1.3;
+}
+.honors li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.44mm;
+  width: 5px;
+  height: 5px;
+  background: #0F2A4A;
+}
+
+/* ---------- Project variant: title (linked) + description (regular) ---------- */
+.entry.project .entry-title { display: inline; }
+.entry.project .entry-desc {
+  font-size: 9.6pt;
+  color: #2a2a2a;
+  margin: 0.4mm 0 0 0;
+  line-height: 1.3;
+}
+
+/* ---------- Links styling ---------- */
+/* Embedded links inherit colour and carry NO underline. Recruiters hover;
+   ATS sees clean text. Matches the reference files' rich-but-quiet linking. */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ---------- Languages line ---------- */
+.languages {
+  font-size: 9.8pt;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+/* ---------- Cover-letter specific ---------- */
+.cover {
+  font-family: "Calibri", "Carlito", "Segoe UI", Arial, sans-serif;
+  font-size: 11pt;
+  line-height: 1.55;
+  color: #1a1a1a;
+}
+.cover .header {
+  position: relative;
+  margin-bottom: 6mm;
+  padding-bottom: 4mm;
+  border-bottom: none;
+}
+/* Filled box at a whole-pixel height, same reason as the resume's section
+   rules: Chrome clamps thin border strokes and rounds fractional heights
+   inconsistently. Softer grey than the resume's navy rules, so a letter
+   still reads as a letter rather than a second resume page. */
+.cover .header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background-color: #c9d3e0;
+}
+.cover .name {
+  font-size: 22pt;
+  margin-bottom: 1.5mm;
+  letter-spacing: -0.005em;
+}
+.cover .contact { font-size: 10pt; }
+.cover .contact .sep { color: #98a4b6; margin: 0 1.6mm; }
+.cover .recipient {
+  margin: 0 0 4mm 0;
+  font-size: 10.5pt;
+}
+.cover .recipient .who { font-weight: 600; }
+.cover .date {
+  font-size: 10.5pt;
+  color: #2a2a2a;
+  margin: 0 0 5mm 0;
+}
+.cover .greeting {
+  font-size: 11pt;
+  margin: 0 0 3mm 0;
+}
+.cover p { margin: 0 0 3.6mm 0; }
+.cover p:last-of-type { margin-bottom: 0; }
+.cover .signoff { margin-top: 5mm; }
+.cover .signoff .name { font-size: 11pt; font-weight: 600; }
+
+/* Cover-letter section accent (none, plain letter feel) */
+.cover .section-title { display: none; }
+
+/* ---------- Print-specific ---------- */
+@media print {
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  /* Keep a whole section together: if the section can't fit on the current
+     page, Chrome moves the whole block (header + body) to the next page. */
+  .section {
+    page-break-inside: avoid; break-inside: avoid;
+  }
+  /* Don't break a single bullet point or skill row */
+  .entry-bullets li, .skill-row, .honors li {
+    page-break-inside: avoid; break-inside: avoid;
+  }
+}

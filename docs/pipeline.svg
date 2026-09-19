@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 280" width="820" height="280" role="img" aria-labelledby="pl-t pl-d">
+<title id="pl-t">Build pipeline</title>
+<desc id="pl-d">Markdown is parsed by build.py, rendered to HTML and CSS which Chrome prints to PDF, and in parallel to a DOCX via python-docx.</desc>
+<defs>
+<marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M2 1 L9 5 L2 9" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+<style>
+.box{fill:#F4F7FB;stroke:#C6D2E2;stroke-width:1}
+.h{font:600 14px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;fill:#0F2A4A}
+.m{font:400 11.5px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;fill:#5B6B85}
+.ln{stroke:#93A1B8;stroke-width:1.5;fill:none}
+#ar path{stroke:#93A1B8}
+.fl{stroke:#0F2A4A;stroke-width:1.6;fill:none;stroke-dasharray:5 7;opacity:.7;animation:flow 1.6s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-24}}
+.g{animation:pulse 2.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.8}}
+@media (prefers-color-scheme:dark){
+.box{fill:#151B25;stroke:#33415A}
+.h{fill:#DCE7F5}
+.m{fill:#93A3BC}
+.ln{stroke:#5A6B85}
+#ar path{stroke:#5A6B85}
+.fl{stroke:#7FA8D9}
+}
+@media (prefers-reduced-motion:reduce){.fl,.g{animation:none}}
+</style>
+</defs>
+
+<rect class="box" x="20" y="104" width="120" height="64" rx="10"/>
+<text class="h" x="80" y="130" text-anchor="middle">Markdown</text>
+<text class="m" x="80" y="150" text-anchor="middle">resume.md</text>
+
+<rect class="box" x="176" y="96" width="130" height="80" rx="10"/>
+<text class="h" x="241" y="124" text-anchor="middle">build.py</text>
+<text class="m" x="241" y="144" text-anchor="middle">parse · classify</text>
+<text class="m" x="241" y="160" text-anchor="middle">· render</text>
+
+<rect class="box" x="344" y="32" width="150" height="56" rx="10"/>
+<text class="h" x="419" y="54" text-anchor="middle">HTML + CSS</text>
+<text class="m" x="419" y="72" text-anchor="middle">one design system</text>
+
+<rect class="box" x="344" y="184" width="150" height="56" rx="10"/>
+<text class="h" x="419" y="206" text-anchor="middle">Word model</text>
+<text class="m" x="419" y="224" text-anchor="middle">metrics mirrored</text>
+
+<rect class="box" x="530" y="32" width="120" height="56" rx="10"/>
+<text class="h" x="590" y="54" text-anchor="middle">Chrome</text>
+<text class="m" x="590" y="72" text-anchor="middle">--print-to-pdf</text>
+
+<rect class="box" x="530" y="184" width="120" height="56" rx="10"/>
+<text class="h" x="590" y="206" text-anchor="middle">python-docx</text>
+<text class="m" x="590" y="224" text-anchor="middle">real Word styles</text>
+
+<rect class="box g" x="690" y="32" width="110" height="56" rx="10"/>
+<text class="h" x="745" y="54" text-anchor="middle">PDF</text>
+<text class="m" x="745" y="72" text-anchor="middle">vector text</text>
+
+<rect class="box g" x="690" y="184" width="110" height="56" rx="10"/>
+<text class="h" x="745" y="206" text-anchor="middle">DOCX</text>
+<text class="m" x="745" y="224" text-anchor="middle">Heading 2 styles</text>
+
+<path class="ln" d="M140 136 H168" marker-end="url(#ar)"/>
+<path class="ln" d="M306 136 H326 V60 H336" marker-end="url(#ar)"/>
+<path class="ln" d="M306 136 H326 V212 H336" marker-end="url(#ar)"/>
+<path class="ln" d="M494 60 H522" marker-end="url(#ar)"/>
+<path class="ln" d="M494 212 H522" marker-end="url(#ar)"/>
+<path class="ln" d="M650 60 H682" marker-end="url(#ar)"/>
+<path class="ln" d="M650 212 H682" marker-end="url(#ar)"/>
+
+<path class="fl" d="M140 136 H168"/>
+<path class="fl" d="M306 136 H326 V60 H336"/>
+<path class="fl" d="M306 136 H326 V212 H336"/>
+<path class="fl" d="M494 60 H522"/>
+<path class="fl" d="M494 212 H522"/>
+<path class="fl" d="M650 60 H682"/>
+<path class="fl" d="M650 212 H682"/>
+</svg>
