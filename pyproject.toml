@@ -5,7 +5,7 @@ requires-python = ">=3.12"
 dependencies = [
     "pymupdf>=1.28.2",     # PDF text extraction + metadata rewriting
     "python-docx>=1.2.0",  # DOCX generation with proper Word styles + hyperlinks
-    "pillow>=10.0.0",      # Crop / resize the headshot
+    "pillow>=13.0.0",      # Crop / resize the headshot
 ]
 # PDF rendering is done by headless Google Chrome / Microsoft Edge
 # (already installed on Windows 11 machines). No Python deps for that.
